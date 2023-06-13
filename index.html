@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y's PORTFOLIO</title>
+    <link rel="stylesheet" href="./css/main_style.css">
+</head>
+
+<body>
+    <div class="intro">
+        <div>클릭하세요.</div>
+    </div>
+    <div id="wrap">
+        <!-- <div class="scroll">0</div> -->
+        <header>
+            <h1><a href="#">LOGO</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#Design">Design</a></li>
+                    <li><a href="#Web">Web</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="icon">ICON</div>
+        </header>
+        <main>
+            <div class="pointer"><span></span></div>
+            <section id="About" class="about"></section>
+            <section id="Design" class="design">
+                <h2>Design</h2>
+                <div>
+                    <article class="work"></article>
+                    <article class="text">
+                        <h3>TITLE</h3>
+                        <p>제작 프로그램</p>
+                        <p>제작 기간</p>
+                        <p>컨 셉</p>
+                        <a href="#">자세히 보기 ▶</a>
+                    </article>
+                </div>
+            </section>
+            <section id="Web" class="web"></section>
+            <section id="Contact" class="contact"></section>
+        </main>
+    </div>
+
+    <script src="./js/jquery-3.7.0.min.js"></script>
+    <script>
+        // $('주어').동사(function () { 실행문 })
+        $('.intro').click(function () {
+            $('.intro').fadeOut(1000);
+        })
+
+        $(window).scroll(function () {
+            let Cscroll = $(this).scrollTop()
+            $('.scroll').text(Cscroll)
+
+            //if(조건){조건이 참값일때 실행문}
+            //if(조건){조건이 참값일때 실행문}else{조건이 거짓값일때 실행문 }
+            if (Cscroll > 0) {
+                $('header').addClass('show')
+            } else {
+                $('header').removeClass('show')
+            }
+
+            if (Cscroll >= $('#About').offset().top) {
+                $('nav li:nth-child(1)').addClass('show').siblings().removeClass('show')
+            }
+
+            if (Cscroll >= $('#Design').offset().top - 200) {
+                $('nav li:nth-child(2)').addClass('show').siblings().removeClass('show')
+                $('#Design').addClass('active')
+            } else {
+                $('#Design').removeClass('active')
+            }
+
+            if (Cscroll >= $('#Web').offset().top) {
+                $('nav li:nth-child(3)').addClass('show').siblings().removeClass('show')
+            }
+            if (Cscroll >= $('#Contact').offset().top) {
+                $('nav li:nth-child(4)').addClass('show').siblings().removeClass('show')
+            }
+
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
